@@ -5,7 +5,8 @@ reg import cmd-colors-solarized/solarized-dark.reg
 
 :: putty
 curl https://raw.githubusercontent.com/altercation/solarized/master/putty-colors-solarized/solarized_dark.reg > putty_solarized_dark.reg
-reg import putty_solarized_dark.reg
+curl https://raw.githubusercontent.com/altercation/solarized/master/putty-colors-solarized/solarized_light.reg > putty_solarized_light.reg
+reg import putty_solarized_light.reg
 
 :: console
 ::curl https://raw.githubusercontent.com/nihique/console2-colors-solarized/master/console_solarized_dark.xml > console_solarized_dark.xml 
