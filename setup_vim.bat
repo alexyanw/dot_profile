@@ -8,7 +8,7 @@ curl https://raw.githubusercontent.com/altercation/solarized/master/putty-colors
 reg import putty_solarized_dark.reg
 
 :: console
-::curl https://raw.githubusercontent.com/nihique/console2-colors-solarized/master/console_solarized_dark.xml > console_solarized_dark.xml 
+::curl -O https://raw.githubusercontent.com/nihique/console2-colors-solarized/master/console_solarized_dark.xml
 ::echo please manually merge console_solarized_dark.xml to console.xml
 
 :: setup vimrc
