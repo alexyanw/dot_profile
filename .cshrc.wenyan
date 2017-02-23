@@ -1,0 +1,12 @@
+set nobeep
+set autolist
+set prompt='%m:%c%# '
+alias ls /bin/ls --color=auto
+setenv TERM screen-256color
+eval `dircolors ~/.dircolors`
+stty erase '^?'
+
+setenv EDITOR vim
+setenv VISUAL vim
+setenv INPUTRC ~/.inputrc
+
