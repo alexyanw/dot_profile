@@ -9,9 +9,8 @@ curl https://raw.githubusercontent.com/altercation/solarized/master/putty-colors
 reg import putty_solarized_light.reg
 
 :: console
-::curl https://raw.githubusercontent.com/nihique/console2-colors-solarized/master/console_solarized_dark.xml > console_solarized_dark.xml 
+::curl -O https://raw.githubusercontent.com/nihique/console2-colors-solarized/master/console_solarized_dark.xml
 curl https://raw.githubusercontent.com/stevenharman/console2-solarized/master/console.light.xml > console_solarized_light.xml 
-::echo please manually merge console_solarized_dark.xml to console.xml
 
 :: setup vimrc
 git clone https://github.com/VundleVim/Vundle.vim.git %USERPROFILE%/vimfiles/bundle/Vundle.vim
