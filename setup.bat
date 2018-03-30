@@ -1,3 +1,4 @@
+cp .gitconfig  %USERPROFILE%/.gitconfig 
 :: set solarized dark for windows cmd console
 git clone https://github.com/neilpa/cmd-colors-solarized 
 reg import cmd-colors-solarized/solarized-dark.reg
@@ -16,4 +17,4 @@ git clone https://github.com/VundleVim/Vundle.vim.git %USERPROFILE%/vimfiles/bun
 
 sed "s/~\/\.vim/~\/vimfiles/g" ./vimrc > %USERPROFILE%/_vimrc
 cd %USERPROFILE%
-vim +PluginInstall +qal
+vim +PluginInstall +qall
