@@ -1,0 +1,18 @@
+[user]
+    email = wenyan@qti.qualcomm.com
+    name = wenyan 
+[color]
+    ui = always
+[core]
+    excludesfile = ~/.gitignore
+[alias]
+    co = checkout
+    s = status -su
+    lol = log --graph --all --oneline --decorate
+    df = difftool
+    dfs = difftool --staged
+[diff]
+	tool = vimdiff
+[merge]
+	tool = vimdiff
+
