@@ -38,7 +38,7 @@ Bundle 'tpope/vim-rails'
 "Bundle 'Valloric/YouCompleteMe'
 
 " code syntax check
-Bundle 'scrooloose/syntastic'
+" Bundle 'scrooloose/syntastic'
 let python_highlight_all=1
 
 filetype plugin indent on    " required
@@ -110,6 +110,8 @@ set incsearch       " do incremental searching
 set tabstop=4 softtabstop=4 shiftwidth=4 expandtab
 autocmd FileType ruby setlocal shiftwidth=2 tabstop=2 softtabstop=2 et
 autocmd FileType yaml setlocal shiftwidth=2 tabstop=2 softtabstop=2 et
+autocmd FileType eruby setlocal shiftwidth=2 tabstop=2 softtabstop=2 et
+autocmd FileType html setlocal shiftwidth=2 tabstop=2 softtabstop=2 et
 retab
 
 set noerrorbells " disable warning bells
