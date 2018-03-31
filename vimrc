@@ -33,7 +33,7 @@ set laststatus=2
 let g:airline_theme='solarized'
 "let g:airline_theme='luna'
 
-Bundle 'tpope/vim-rails'
+"Bundle 'tpope/vim-rails'   " too slow
 
 "Bundle 'Valloric/YouCompleteMe'
 
