@@ -24,8 +24,8 @@ if &diff
     highlight DiffChange cterm=none ctermfg=none ctermbg=White gui=none guifg=none guibg=none
     highlight DiffText cterm=none ctermfg=Red ctermbg=none gui=none guifg=bg guibg=none
 endif
-Bundle 'vim-airline/vim-airline'
-Bundle 'vim-airline/vim-airline-themes'
+"Bundle 'vim-airline/vim-airline'
+"Bundle 'vim-airline/vim-airline-themes'
 "let g:airline_powerline_fonts = 1
 "set t_Co=256   " WAR by TERM=xterm-256color in cshrc
 set laststatus=2
