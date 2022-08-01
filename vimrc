@@ -64,25 +64,25 @@ let g:NERDTreeDirArrowExpandable = '>'
 let g:NERDTreeDirArrowCollapsible = '<'
 let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
 
-" ctags, taglist
-Bundle 'taglist.vim'
-set tags=tags;  " last ; together with autochdir allows tags to recursively search parent dirs
-set autochdir
-nnoremap <silent> <F8> :TlistToggle<CR>
-"let Tlist_Auto_Open=0 " Let the tag list open automatically
-"let Tlist_Auto_Update=1 " Update the tag list automatically
-"let Tlist_Compact_Format=1 " Show small menu
-"let Tlist_Enable_Fold_Column=0 "do show folding tree
-"let Tlist_Process_File_Always=1 " Always process the source file
-let Tlist_Ctags_Cmd="/usr/bin/ctags"    " location of ctags
-let Tlist_Show_One_File=1               " Only show the tag list of current file
-let Tlist_Exist_OnlyWindow=1            " If you are the last, kill yourself
-let Tlist_File_Fold_Auto_Close=1        " Fold closed other trees
-"let Tlist_Sort_Type="name"             " Order by name
-let Tlist_WinWidth=28                   " Set the window 28 cols wide.
-"let Tlist_Close_On_Select=1 " Close the list when a item is selected
-"let Tlist_Exit_OnlyWindow = 1
-"let Tlist_Use_Right_Window = 1
+"" ctags, taglist
+"Bundle 'taglist.vim'
+"set tags=tags;  " last ; together with autochdir allows tags to recursively search parent dirs
+"set autochdir
+"nnoremap <silent> <F8> :TlistToggle<CR>
+""let Tlist_Auto_Open=0 " Let the tag list open automatically
+""let Tlist_Auto_Update=1 " Update the tag list automatically
+""let Tlist_Compact_Format=1 " Show small menu
+""let Tlist_Enable_Fold_Column=0 "do show folding tree
+""let Tlist_Process_File_Always=1 " Always process the source file
+"let Tlist_Ctags_Cmd="/usr/bin/ctags"    " location of ctags
+"let Tlist_Show_One_File=1               " Only show the tag list of current file
+"let Tlist_Exist_OnlyWindow=1            " If you are the last, kill yourself
+"let Tlist_File_Fold_Auto_Close=1        " Fold closed other trees
+""let Tlist_Sort_Type="name"             " Order by name
+"let Tlist_WinWidth=28                   " Set the window 28 cols wide.
+""let Tlist_Close_On_Select=1 " Close the list when a item is selected
+""let Tlist_Exit_OnlyWindow = 1
+""let Tlist_Use_Right_Window = 1
 
 " ############################ non-plugin settings ###############################
 " layout setting
@@ -149,9 +149,10 @@ autocmd BufNewFile,BufRead BUCK :setlocal filetype=bzl
 let g:ale_completion_enabled = 1
 nnoremap <silent> K :ALEHover<CR>
 nnoremap <silent> gd :ALEGoToDefinition<CR>
-nnoremap <silent> gs :ALEGoToDefinitionInSplit<CR>
-nnoremap <silent> gv :ALEGoToDefinitionInVSplit<CR>
-nnoremap <silent> gtt :ALEGoToDefinitionInTab<CR>
+nnoremap <C-]> gd
+nnoremap <silent> gs :ALEGoToDefinition -split<CR>
+nnoremap <silent> gv :ALEGoToDefinition -vsplit<CR>
+nnoremap <silent> gtt :ALEGoToDefinition -tab<CR>
 nnoremap <M-LeftMouse> <LeftMouse> :ALEGoToDefinition<CR>
 nnoremap <silent> <C-d> :ALEDetail<CR>
 nnoremap <silent> <leader>a :ALEStopAllLSPs<CR>
@@ -159,19 +160,22 @@ nnoremap <silent> <leader>a :ALEStopAllLSPs<CR>
 let g:ale_echo_msg_format = "[%linter%][ code]% %s"
 " Format when we save
 let g:ale_fix_on_save = 1
-let g:ale_linters_explicit = 1
 " Not run ale_fixers for \w
-nnoremap <silent> <leader>w :let g:ale_fix_on_save=0<CR>:w<CR>:let g:ale_fix_on_save=1<CR>
+"nnoremap <silent> <leader>w :let g:ale_fix_on_save=0<CR>:w<CR>:let g:ale_fix_on_save=1<CR>
+let g:ale_linters_explicit = 1
 let g:ale_sign_column_always = 1
 let g:ale_linters = {
-    \ 'python': ['flake8', 'pyls'] }
+    \ 'python': ['pylint', 'pyright', 'pydocstring'] }
 let g:ale_fixers = {
     \ 'python': ['black']
     \}
 
+let g:ale_python_executable='python3'
+let g:ale_python_pylint_use_global=1
+
+" auto open preview-window when cursor moves to problematic lines
 let g:ale_cursor_detail = 1
 let g:ale_close_preview_on_insert = 1
-
 " make preview window split on bottom
 set splitbelow
 
