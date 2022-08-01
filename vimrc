@@ -1,5 +1,7 @@
+" turn off compatibility with old vi
 set nocompatible
-filetype off                  " required
+" turn filetype detection off, even it's not strictly necessary
+filetype off
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -8,10 +10,23 @@ call vundle#rc('~/.vim')
 "call vundle#rc('~/some/path/here')
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
+call vundle#begin('~/.vim/bundle')
 
-Bundle 'altercation/vim-colors-solarized'
+Plugin 'tpope/vim-abolish'
+" crc: camel, crs: snake, cru: uppercase
+
+Plugin 'wincent/command-t'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'w0rp/ale'
+Plugin 'scrooloose/nerdtree'
+call vundle#end()
+
 " display related
-syntax enable
+" keep current color setting
+" syntax enable
+" override with default color setting
+syntax on
+
 set background=dark
 "colorscheme desert
 colorscheme solarized
@@ -44,7 +59,6 @@ let python_highlight_all=1
 filetype plugin indent on    " required
 
 " nerdtree setting
-Plugin 'scrooloose/nerdtree'
 map <C-n> :NERDTreeToggle<CR>
 let g:NERDTreeDirArrowExpandable = '>'
 let g:NERDTreeDirArrowCollapsible = '<'
@@ -95,6 +109,7 @@ let ruby_fold=1               " Ruby
 let sh_fold_enabled=1         " sh
 let vimsyn_folding='af'       " Vim script
 let xml_syntax_folding=1      " XML
+let g:markdown_folding=1      " md
 
 set encoding=utf-8
 
@@ -106,6 +121,11 @@ set showcmd		    " display incomplete commands
 set showmatch
 set hlsearch        " highlight search
 set incsearch       " do incremental searching
+
+set colorcolumn=81  " absolute columns to highlight, multicolumns like 81,101
+" highlight on tab
+syn match tab display "\t"
+hi link tab Error
 
 set tabstop=4 softtabstop=4 shiftwidth=4 expandtab
 autocmd FileType ruby setlocal shiftwidth=2 tabstop=2 softtabstop=2 et
@@ -119,4 +139,39 @@ set noswapfile " disable swp dump
 
 " In many terminal emulators the mouse works just fine, thus enable it.
 set mouse=a
+
+
+"""""""""""""""""""""""""""""""""" ALE """"""""""""""""""""""""""""""""""""""
+" version >= 800
+autocmd BufNewFile,BufRead TARGETS :setlocal filetype=bzl
+autocmd BufNewFile,BufRead BUCK :setlocal filetype=bzl
+
+let g:ale_completion_enabled = 1
+nnoremap <silent> K :ALEHover<CR>
+nnoremap <silent> gd :ALEGoToDefinition<CR>
+nnoremap <silent> gs :ALEGoToDefinitionInSplit<CR>
+nnoremap <silent> gv :ALEGoToDefinitionInVSplit<CR>
+nnoremap <silent> gtt :ALEGoToDefinitionInTab<CR>
+nnoremap <M-LeftMouse> <LeftMouse> :ALEGoToDefinition<CR>
+nnoremap <silent> <C-d> :ALEDetail<CR>
+nnoremap <silent> <leader>a :ALEStopAllLSPs<CR>
+
+let g:ale_echo_msg_format = "[%linter%][ code]% %s"
+" Format when we save
+let g:ale_fix_on_save = 1
+let g:ale_linters_explicit = 1
+" Not run ale_fixers for \w
+nnoremap <silent> <leader>w :let g:ale_fix_on_save=0<CR>:w<CR>:let g:ale_fix_on_save=1<CR>
+let g:ale_sign_column_always = 1
+let g:ale_linters = {
+    \ 'python': ['flake8', 'pyls'] }
+let g:ale_fixers = {
+    \ 'python': ['black']
+    \}
+
+let g:ale_cursor_detail = 1
+let g:ale_close_preview_on_insert = 1
+
+" make preview window split on bottom
+set splitbelow
 
