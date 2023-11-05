@@ -1,3 +1,11 @@
+HISTFILESIZE=-1
+HISTSIZE=1000000
+HISTCONTROL=ignoredups
+HISTFILE=~/.bash_history_actual
+
+shopt -s histappend
+PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
+
 alias vi=vim
 export EDITOR=vim 
 export VISUAL=vim 
