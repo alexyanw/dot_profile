@@ -1,9 +1,10 @@
 [user]
-    email = wenyan@qti.qualcomm.com
+    email = alexyanw@gmail.com
     name = wenyan 
 [color]
     ui = always
 [core]
+    editor = nvim
     excludesfile = ~/.gitignore
 [alias]
     co = checkout
